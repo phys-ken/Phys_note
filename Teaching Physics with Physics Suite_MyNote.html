@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Teaching Physics with Physics Suite_MyNote.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E7%A7%91%E5%AD%A6%E3%82%92%E3%81%A9%E3%81%86%E6%95%99%E3%81%88%E3%82%8B%E3%81%8B">科学をどう教えるか</h1>
+<h2 id="%E7%AC%AC%EF%BC%92%E7%AB%A0-%E8%AA%8D%E7%9F%A5%E7%A7%91%E5%AD%A6%E3%81%AE%E5%8E%9F%E7%90%86%E3%81%8B%E3%82%89%E5%B0%8E%E3%81%8B%E3%82%8C%E3%82%8B%E6%8E%88%E6%A5%AD%E3%81%B8%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3">第２章　認知科学の原理から導かれる授業へのガイドライン</h2>
+<h3 id="%E5%AD%A6%E7%BF%92%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E8%AA%8D%E7%9F%A5%E7%9A%84%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9p39">学習者のための認知的リソース(P.39)</h3>
+<blockquote>
+<p>ほとんどの学生は、すべての現象を記述することができる単一の一貫性のある描像を作ろうとはしないことだ。ほとんどの学生は、「事物がどのように機能するかに関して、しばしば互いに矛盾する不完全な法則を、そこそこの数だけ寄せ集めることに満足してしまっているのだ。」(P.39)</p>
+</blockquote>
+<blockquote>
+<p>実は限られた状況や問題についてのみ使える限定的なモデルを持っていて、その範囲で首尾一貫していると感じているのかもしれない。(P.40)</p>
+</blockquote>
+<ul>
+<li>プリミティブ/リソース
+<ul>
+<li>経験したことを直接解釈することに基づいた、これ以上分割できない機能的な部品</li>
+<li>『AとBが逆方向に作用しているとき、より大きい方から小さい方を引いた効果が現れる』</li>
+</ul>
+</li>
+<li>ファセット
+<ul>
+<li>特定の状況に対して推察された、(一面的な)物理法則</li>
+<li>『動くためには力が必要』</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E8%AA%8D%E7%9F%A5%E3%83%A2%E3%83%87%E3%83%AB%E3%81%8B%E3%82%89%E5%BE%97%E3%82%89%E3%82%8C%E3%82%8B%E6%95%99%E8%82%B2%E3%81%AE%E6%8C%87%E9%87%9D%E8%B6%B3%E6%8E%9B%E3%81%8B%E3%82%8A%E3%81%A8%E3%81%AA%E3%82%8B%EF%BC%95%E3%81%A4%E3%81%AE%E5%8E%9F%E7%90%86p48">認知モデルから得られる教育の指針：足掛かりとなる５つの原理(P.48)</h3>
+<ul>
+<li>
+<p>原理１(構成主義の原理)：</p>
+<ul>
+<li>個々人は、すでに持っている知識とのつながりを作ることで、知識を構築する。また、すでに持っている知識を用いて、受け取った情報に対する創造的な応答を生み出す。
+<ul>
+<li>
+<blockquote>
+<p>情報にアクセスするプロセスこそがスキーマの本質的な構成要素であるため、文脈を限定し詳細な手がかりを与えてしまえば、その学生たちの関連づけのパターンを試験していることにはならない。学生は情報を「持って」入るが、それは、ほとんど事前にプログラムされているような、非常に限定的な状況以外では用いられることも想起されることもない。(P.50)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>原理２(文脈の原理)：</p>
+<ul>
+<li>人が構成するものは、文脈に依存する。この文脈には、その人の心的状態(mental state)も含まれる。
+<ul>
+<li>
+<blockquote>
+<p>我々はこの警告をつい忘れて、学生はあることを知っているか知っていないかのどちらかであると仮定するモデルにたやすく逆戻りしがちである。応答の文脈依存性に注目すると、状況はそんなに単純ではないということを常に念頭に置くことができる。(P.50)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>原理３(変容の原理)：</p>
+<ul>
+<li>
+<p>既存のスキーマに合致するか、それを拡張する事柄を学ぶのは比較的容易だが、確立されているスキーマを大きく変えることは難しい。</p>
+<ul>
+<li>系3.１：すでにほとんど知っていること以外のことを学ぶのは難しい。</li>
+<li>系3.２：学習の多くは、アナロジー(類推)を通じてなされる。</li>
+<li>系3.３：「<strong>試金石</strong>」的な問題および例は非常に重要である。
+系3.４：確立されたメンタルモデルを変容させることは非常に難しい。</li>
+</ul>
+</li>
+<li>
+<blockquote>
+<p>相互につながりを持つ一連の試金石問題を中心として学習過程を構築することは、各要素の重要性と相互関連性を学生が理解する上での大きな助けになりうることを示唆している。</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>これまで伝統的に、我々は、原理１(構成主義の原理)を過度に単純化した「学生に十分な量の問題演習を行わせさえすれば、いずれは考え方を理解するだろう」という見方をあてにしてきた。残念なことに、この原理のこうした単純な解釈は必ずしも成り立たない。（中略）韓国のこれらの学生も、アメリカの学生の場合と同程度の割合で、力学の基本概念の理解に困難を抱えていた。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>原理４(個別性の原理)：</p>
+<ul>
+<li>
+<p>個々人それぞれが自分自身の心的構造(mental structure)を構築するので、学生が異なれば心的応答も学習に対するアプローチ方法も異なってくる。このため、いかなる学生集団においても、非常に多数の認知的変数について、大きな分布の広がりを持つであろう。</p>
+<ul>
+<li>系4.１：人それぞれの学習スタイルはさまざまである。</li>
+<li>系4.２：「特定の主題を教えるのに最良の方法は何か？」という問に対する唯一絶対の答えはない。</li>
+<li>系4.３：我々自身の個人的な経験は、学生を教える最良の方法に対する指針として、おそらく非常にあてにならない。</li>
+<li>系4.４：学生の知識の状態についての情報は、彼らの中にある。もし彼らが何を知っているかを知りたいのならば、我々は質問をするだけでなく、彼らのいうことに耳を傾けなければならない！</li>
+</ul>
+</li>
+<li>
+<blockquote>
+<p>すべての点で平均的な学生などいないのだから、「平均的な」アプローチは誰にも適合しないものになるだろう。学生は異なる経験をもち、その経験から異なる結論を引き出すという事実に加えて、彼らのアプローチの方法も互いに大きく異なりうる。</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>学生によって肯定的に反応するアプローチは異なるだろう。もし自分のすべての学生を<strong>教え</strong>たい(自分メモ：<strong>理解させ</strong>たいの意か？)という見地に立とうとするなら、さまざまなアプローチを組み合わせて用いなければならず、そしてその中には一部の学生にとってはうまくいかないものもあることを覚悟しなければならない。</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>物理教員は典型的とは言えない集団である。</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>私は、物理学科の自分の級友たちの多くのその後のキャリアを、学部や大学院の頃から数十年にわたって関心を持って追跡してみたが、絶対的に明らかなことが一つある。それは、学校の勉強で「もっともよくできた」者が、必ずしも物理学にもっとも重要な貢献をしてきたわけではないということだ。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>原理５(社会的学習の原理)：</p>
+<ul>
+<li>ほとんどの個人にとって、もっとも効果的な学習は、社会的な相互作用を通して行われる。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E8%AA%8D%E7%9F%A5%E3%83%A2%E3%83%87%E3%83%AB%E3%81%8B%E3%82%89%E5%B0%8E%E3%81%8B%E3%82%8C%E3%82%8B%E3%81%84%E3%81%8F%E3%81%A4%E3%81%8B%E3%81%AE%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E6%95%99%E8%82%B2%E6%96%B9%E6%B3%95p63">認知モデルから導かれるいくつかの一般的な教育方法(P.63)</h3>
+
+</body>
+</html>
